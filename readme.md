@@ -3,7 +3,7 @@
 ```
 git checkout bash .bash
 ln -sf .bash/gitconfig .gitconfig
-ln -sf .bash/profile .bash_profile
+ln -sf .bash/bash_profile .bash_profile
 ln -sf .bash/git_template .git_template
 ```
 
