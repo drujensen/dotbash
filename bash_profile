@@ -25,7 +25,7 @@ export PATH="$HOME/.crenv/bin:$PATH"
 eval "$(crenv init -)"
 
 # docker
-eval $(docker-machine env)
+# eval $(docker-machine env)
 
 # alias's
 alias ll='git log --oneline --graph --decorate --all'
