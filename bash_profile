@@ -34,6 +34,7 @@ alias be='bundle exec'
 alias dc="docker-compose"
 alias dm="docker-machine"
 alias st='open -a SourceTree'
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
 GIT_PS1_SHOWDIRTYSTATE=true
