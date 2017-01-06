@@ -13,24 +13,35 @@ export NVM_DIR="$HOME/.nvm"
 export JENV_ROOT="$HOME/.jenv"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
+# android
+export ANDROID_HOME="/Users/drujensen/Library/Android/sdk"
+
 # ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
 
+# go
+export GOPATH="$(pwd)/"
+export PATH="/usr/local/opt/go/libexec/bin:$PATH"
+
 # crystal
-export PATH="$HOME/.crenv/bin:$PATH"
-eval "$(crenv init -)"
+#export PATH="$HOME/.crenv/bin:$PATH"
+#eval "$(crenv init -)"
 
 # docker
-eval $(docker-machine env)
+# eval $(docker-machine env)
 
 # alias's
-alias ll='git log --oneline --graph --decorate --all'
+alias gbr='git branch | grep -v "master" | xargs git branch -D'
 alias vi='/usr/local/bin/vim'
 alias be='bundle exec'
 alias dc="docker-compose"
 alias dm="docker-machine"
 alias st='open -a SourceTree'
+alias de='docker exec -it ping_puma_1'
+
+# docker TAG version
+TAG=latest
 
 # prompt
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -39,3 +50,15 @@ GIT_PS1_SHOWDIRTYSTATE=true
 . /usr/local/Cellar/git/2.7.2/etc/bash_completion.d/git-prompt.sh
 
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\$(__git_ps1)\n$"
+
+# vi mode
+set -o vi
+
+export DISPLAY_MAC=`ifconfig en0 | grep "inet " | cut -d " " -f2`:0
+
+function startx() {
+    if [ -z "$(ps -ef|grep XQuartz|grep -v grep)" ] ; then
+        open -a XQuartz
+        socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &
+    fi
+}
