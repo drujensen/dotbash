@@ -38,14 +38,14 @@ alias be='bundle exec'
 alias dc="docker-compose"
 alias dm="docker-machine"
 alias st='open -a SourceTree'
-alias de='docker exec -it ping_puma_1'
+alias de='docker exec -it catalyst_puma_1'
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
 GIT_PS1_SHOWDIRTYSTATE=true
 
-. /usr/local/Cellar/git/2.11.0/etc/bash_completion.d/git-completion.bash
-. /usr/local/Cellar/git/2.11.0/etc/bash_completion.d/git-prompt.sh
+. /usr/local/etc/bash_completion.d/git-completion.bash
+. /usr/local/etc/bash_completion.d/git-prompt.sh
 
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\$(__git_ps1)\n$"
 
