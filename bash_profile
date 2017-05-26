@@ -32,13 +32,15 @@ export PATH="/usr/local/opt/go/libexec/bin:$PATH"
 # eval $(docker-machine env)
 
 # alias's
-alias gbr='git branch | grep -v "master" | xargs git branch -D'
+alias gbr='git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
 alias vi='/usr/local/bin/vim'
 alias be='bundle exec'
 alias dc="docker-compose"
 alias dm="docker-machine"
 alias st='open -a SourceTree'
 alias de='docker exec -it catalyst_puma_1'
+alias ng="npm list -g --depth=0 2>/dev/null"
+alias nl="npm list --depth=0 2>/dev/null"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
