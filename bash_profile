@@ -25,11 +25,15 @@ export GOPATH="$(pwd)/"
 export PATH="/usr/local/opt/go/libexec/bin:$PATH"
 
 # crystal
-#export PATH="$HOME/.crenv/bin:$PATH"
-#eval "$(crenv init -)"
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 # docker
 # eval $(docker-machine env)
+
+# bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
 
 # alias's
 alias gbr='git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
@@ -45,9 +49,6 @@ alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
 GIT_PS1_SHOWDIRTYSTATE=true
-
-. /usr/local/etc/bash_completion.d/git-completion.bash
-. /usr/local/etc/bash_completion.d/git-prompt.sh
 
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\$(__git_ps1)\n$"
 
