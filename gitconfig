@@ -1,23 +1,25 @@
-# This is Git's per-user configuration file.
 [user]
 	name = Dru Jensen
 	email = drujensen@gmail.com
 [core]
 	editor = /usr/local/bin/vim
-	excludesfile = /Users/drujensen/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [init]
-	templatedir = ~/.git_template
+	templatedir = ~/.git_init_template
 [alias]
   ctags = !.git/hooks/ctags
   ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lg = log --oneline --graph --decorate --all
 [diff]
-    tool = mvimdiff
+  tool = mvimdiff
+[merge]
+  tool = mvimdiff
+[diftool]
+  prompt = 0
 [difftool "mvimdiff"]
-    cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
-[commit]
-	template = /Users/drujensen/.stCommitMsg
+  cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
+  prompt = 0
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process

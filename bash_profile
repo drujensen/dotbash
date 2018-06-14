@@ -19,6 +19,7 @@ export ANDROID_HOME="/Users/drujensen/Library/Android/sdk"
 # ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
+export EDITOR='vim'
 
 # go
 export GOPATH="$(pwd)/"
@@ -29,6 +30,7 @@ export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 # docker
 # eval $(docker-machine env)
+COMPOSE_HTTP_TIMEOUT=200
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -41,10 +43,12 @@ alias vi='/usr/local/bin/vim'
 alias be='bundle exec'
 alias dc="docker-compose"
 alias dm="docker-machine"
-alias st='open -a SourceTree'
-alias de='docker exec -it catalyst_puma_1'
-alias ng="npm list -g --depth=0 2>/dev/null"
-alias nl="npm list --depth=0 2>/dev/null"
+alias ds="docker system"
+alias dn="docker network"
+alias dv="docker volume"
+alias di="docker image"
+alias dt="docker container"
+alias de='docker container exec -it catalyst_puma_1'
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
