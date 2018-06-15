@@ -41,13 +41,9 @@ fi
 alias gbr='git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
 alias vi='/usr/local/bin/vim'
 alias be='bundle exec'
+alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
-alias ds="docker system"
-alias dn="docker network"
-alias dv="docker volume"
-alias di="docker image"
-alias dt="docker container"
 alias de='docker container exec -it catalyst_puma_1'
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
