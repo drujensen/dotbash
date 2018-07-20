@@ -38,7 +38,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # alias's
-alias gbr='git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
+alias gbr='git checkout master; git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
 alias vi='/usr/local/bin/vim'
 alias be='bundle exec'
 alias d="docker"
