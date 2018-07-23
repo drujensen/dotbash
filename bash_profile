@@ -29,13 +29,14 @@ export PATH="/usr/local/opt/go/libexec/bin:$PATH"
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 # docker
-# eval $(docker-machine env)
 COMPOSE_HTTP_TIMEOUT=200
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
 fi
+# apt-vim
+export PATH="/Users/drujensen/.vimpkg/bin:$PATH"
 
 # alias's
 alias gbr='git checkout master; git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
@@ -49,17 +50,7 @@ alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
 GIT_PS1_SHOWDIRTYSTATE=true
-
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\$(__git_ps1)\n$"
 
 # vi mode
 set -o vi
-
-export DISPLAY_MAC=`ifconfig en0 | grep "inet " | cut -d " " -f2`:0
-
-function startx() {
-    if [ -z "$(ps -ef|grep XQuartz|grep -v grep)" ] ; then
-        open -a XQuartz
-        socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &
-    fi
-}
