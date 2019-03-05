@@ -28,8 +28,12 @@ export PATH="/usr/local/opt/go/libexec/bin:$PATH"
 # crystal
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
+# llvm
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 # docker
-COMPOSE_HTTP_TIMEOUT=200
+export COMPOSE_HTTP_TIMEOUT=200
+export NGROK_AUTH=7vSi7ZUYnJBbzgmAu3cSh_vJ6qyVxN5FQXKKNGvvaN
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -45,7 +49,7 @@ alias be='bundle exec'
 alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
-alias de='docker container exec -it catalyst_puma_1'
+alias de='docker-compose exec puma'
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt

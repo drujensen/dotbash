@@ -2,7 +2,7 @@
 	name = Dru Jensen
 	email = drujensen@gmail.com
 [core]
-	editor = /usr/local/bin/vim
+	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore_global
 [init]
 	templatedir = ~/.git_init_template
@@ -13,6 +13,9 @@
   lg = log --oneline --graph --decorate --all
 [diff]
   tool = mvimdiff
+[diff "enc"]
+  textconv = rails encrypted:show
+  cachetextconv = false
 [merge]
   tool = mvimdiff
 [diftool]
