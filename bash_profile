@@ -2,6 +2,9 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc" # Load the default .profile
 
+# silence mac zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # mono
 export MONO_GAC_PREFIX="/usr/local"
 
@@ -26,10 +29,10 @@ export GOPATH="$(pwd)/"
 export PATH="/usr/local/opt/go/libexec/bin:$PATH"
 
 # crystal
-export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 # llvm
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+#export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # docker
 export COMPOSE_HTTP_TIMEOUT=200
@@ -58,3 +61,4 @@ PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\$(__git_
 
 # vi mode
 set -o vi
+export PATH="/usr/local/sbin:$PATH"
