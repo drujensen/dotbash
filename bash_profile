@@ -68,5 +68,3 @@ PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"
 # vi mode
 set -o vi
 export PATH="/usr/local/sbin:$PATH"
-
-export NPM_TOKEN=5540a001-e196-448d-ad62-b531570b585d
