@@ -5,19 +5,14 @@
 # silence mac zsh warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# mono
-export MONO_GAC_PREFIX="/usr/local"
-
 # node
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # java
-export JENV_ROOT="$HOME/.jenv"
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-# android
-export ANDROID_HOME="/Users/drujensen/Library/Android/sdk"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 # ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
@@ -25,7 +20,7 @@ eval "$(rbenv init -)"
 export EDITOR='vim'
 
 # go
-export GOPATH="$(pwd)/"
+export GOPATH="/User/djensen/workspace/go"
 export PATH="/usr/local/opt/go/libexec/bin:$PATH"
 
 # crystal
@@ -42,6 +37,18 @@ export NGROK_AUTH=7vSi7ZUYnJBbzgmAu3cSh_vJ6qyVxN5FQXKKNGvvaN
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
 fi
+
+# git completion - git install bash-git-prompt
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+  GIT_PROMPT_ONLY_IN_REPO=1
+  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+fi
+
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
+
 # apt-vim
 export PATH="/Users/drujensen/.vimpkg/bin:$PATH"
 
@@ -52,13 +59,14 @@ alias be='bundle exec'
 alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
-alias de='docker-compose exec puma'
+alias dp="docker system prune -f --volumes"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
-GIT_PS1_SHOWDIRTYSTATE=true
-PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\$(__git_ps1)\n$"
+PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"
 
 # vi mode
 set -o vi
 export PATH="/usr/local/sbin:$PATH"
+
+export NPM_TOKEN=5540a001-e196-448d-ad62-b531570b585d
