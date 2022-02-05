@@ -5,6 +5,10 @@
 # silence mac zsh warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# set editor
+export EDITOR='vim'
+set -o vi
+
 # node
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -17,21 +21,6 @@ eval "$(jenv init -)"
 # ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
-export EDITOR='vim'
-
-# go
-export GOPATH="/User/djensen/workspace/go"
-export PATH="/usr/local/opt/go/libexec/bin:$PATH"
-
-# crystal
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-
-# llvm
-#export PATH="/usr/local/opt/llvm/bin:$PATH"
-
-# docker
-export COMPOSE_HTTP_TIMEOUT=200
-export NGROK_AUTH=7vSi7ZUYnJBbzgmAu3cSh_vJ6qyVxN5FQXKKNGvvaN
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -50,7 +39,8 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
 fi
 
 # apt-vim
-export PATH="/Users/drujensen/.vimpkg/bin:$PATH"
+export PATH="$HOME/.vimpkg/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 # alias's
 alias gbr='git checkout master; git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
@@ -64,7 +54,3 @@ alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # prompt
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"
-
-# vi mode
-set -o vi
-export PATH="/usr/local/sbin:$PATH"
