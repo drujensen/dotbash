@@ -68,9 +68,7 @@ alias dm="docker-machine"
 alias dp="docker system prune -f --volumes"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 alias xcode='xed'
-
-alias ddb='aws --endpoint-url=http://localhost:4566 dynamodb'
-alias s3='aws --endpoint-url=http://localhost:4566 s3'
+alias kc='kubectl'
 
 # prompt
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"
