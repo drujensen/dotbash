@@ -10,9 +10,3 @@ ln -sf .bash/git_template .git_template
 ```
 ln -sf .bash/bash_profile .bash_profile
 ```
-
-## zsh
-```
-ln -sf .bash/zshrc .zshrc
-```
-
