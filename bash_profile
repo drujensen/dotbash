@@ -15,6 +15,12 @@ set -o vi
 # brew install
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# llvm
+export PATH="$(brew --prefix llvm)/bin:${PATH}"
+
+# carbon explorer
+export PATH="$HOME/.carbon/bin:$PATH"
+
 # node
 export NVM_DIR="$HOME/.nvm"
   [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
@@ -33,17 +39,20 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 eval "$(pyenv init -)"
 
 # go
-export GOPATH="/User/djensen/workspace/go"
-export PATH="$(brew --prefix)/opt/go/libexec/bin:$PATH"
+export GOPATH="/Users/drujensen/.go"
+export PATH="$(brew --prefix)/opt/go/libexec/bin:$GOPATH/bin:$PATH"
 
 # crystal
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/opt/openssl/lib"
 
 # rust environment
-source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 # swift environment
 export PATH="$HOME/.mint/bin:$PATH"
+
+# apio and gtkwave
+export PATH=/Applications/gtkwave.app/Contents/Resources/bin/:$PATH
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -64,15 +73,17 @@ fi
 
 # alias's
 alias gbr='git checkout master; git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
+alias gbm='git checkout main; git pull origin main; git fetch --all; git branch | grep -v "main" | xargs git branch -D'
 alias vi='$(brew --prefix)/bin/vim'
 alias be='bundle exec'
 alias d="docker"
-alias dc="docker-compose"
-alias dm="docker-machine"
+alias dc="docker compose"
 alias dp="docker system prune -f --volumes"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 alias xcode='xed'
 alias idea='open -na "IntelliJ IDEA CE.app" --args'
+alias intel="env /usr/bin/arch -x86_64 /bin/bash -l"
+alias arm="env /usr/bin/arch -arm64 /bin/bash -l"
 
 # prompt
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"

@@ -4,6 +4,7 @@
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore_global
+	hooksPath = .githooks
 [init]
 	templatedir = ~/.git_template
 	defaultBranch = master
