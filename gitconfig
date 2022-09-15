@@ -14,16 +14,16 @@
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lg = log --oneline --graph --decorate --all
 [diff]
-  tool = mvimdiff
+  tool = vimdiff
 [diff "enc"]
   textconv = rails encrypted:show
   cachetextconv = false
 [merge]
-  tool = mvimdiff
+  tool = vimdiff
 [diftool]
   prompt = 0
-[difftool "mvimdiff"]
-  cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
+[difftool "vimdiff"]
+  cmd = vim -f -d \"$LOCAL\" \"$REMOTE\"
   prompt = 0
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f

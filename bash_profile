@@ -27,6 +27,7 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # java
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/opt/libsodium/lib"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
