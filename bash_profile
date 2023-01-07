@@ -36,8 +36,10 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
 
 #python
-export PATH="$HOME/.pyenv/shims:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # go
 export GOPATH="/Users/drujensen/.go"
@@ -51,9 +53,6 @@ export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/opt/openssl/lib"
 
 # swift environment
 export PATH="$HOME/.mint/bin:$PATH"
-
-# apio and gtkwave
-export PATH=/Applications/gtkwave.app/Contents/Resources/bin/:$PATH
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -73,8 +72,8 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
 fi
 
 # alias's
-alias gbr='git checkout master; git pull origin master; git fetch --all; git branch | grep -v "master" | xargs git branch -D'
-alias gbm='git checkout main; git pull origin main; git fetch --all; git branch | grep -v "main" | xargs git branch -D'
+alias gbr='git checkout master; git fetch --all --prune ; git pull origin master; git branch | grep -v "master" | xargs git branch -D'
+alias gbm='git checkout main; git fetch --all --prune; git pull origin main; git branch | grep -v "main" | xargs git branch -D'
 alias vi='$(brew --prefix)/bin/vim'
 alias be='bundle exec'
 alias d="docker"
