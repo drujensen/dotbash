@@ -9,4 +9,5 @@ ln -sf .bash/git_template .git_template
 ## bash
 ```
 ln -sf .bash/bash_profile .bash_profile
+ln -sf .bash/bashrc .bashrc
 ```
