@@ -7,7 +7,7 @@
   hooksPath = .githooks
 [init]
   templatedir = ~/.git_template
-  defaultBranch = master
+  defaultBranch = main
 [alias]
   ctags = !.git/hooks/ctags
   ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
@@ -15,9 +15,6 @@
   lg = log --oneline --graph --decorate --all
 [diff]
   tool = vimdiff
-[diff "enc"]
-  textconv = rails encrypted:show
-  cachetextconv = false
 [merge]
   tool = vimdiff
 [diftool]
@@ -33,3 +30,6 @@
 [pull]
   ff = only
   rebase = true
+[push]
+	default = current
+	autoSetupRemote = true

@@ -50,6 +50,19 @@ export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/opt/openssl/lib"
 # swift environment
 export PATH="$HOME/.mint/bin:$PATH"
 
+# pipx
+export PATH="$PATH:/Users/drujensen/.local/bin"
+
+# snowflake
+export PATH="$PATH:/Users/drujensen/.snowsql/1.2.24"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+# Amplify CLI
+export PATH="$HOME/.amplify/bin:$PATH"
+
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
@@ -83,10 +96,3 @@ alias arm="env /usr/bin/arch -arm64 /bin/bash -l"
 
 # prompt
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"
-
-# Created by `pipx` on 2023-03-15 01:30:43
-export PATH="$PATH:/Users/drujensen/.local/bin"
-
-# Snowflake client
-export PATH="$PATH:/Users/drujensen/.snowsql/1.2.24"
-
