@@ -1,8 +1,12 @@
 [user]
   name = Dru Jensen
   email = drujensen@gmail.com
+
+[includeIf "gitdir:~/workspace/happymoney/**"]
+  path = ~/workspace/happymoney/.gitconfig
+
 [core]
-  editor = /usr/bin/vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
   hooksPath = .githooks
 [init]
@@ -31,5 +35,5 @@
   ff = only
   rebase = true
 [push]
-	default = current
-	autoSetupRemote = true
+  default = current
+  autoSetupRemote = true
