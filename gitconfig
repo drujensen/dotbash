@@ -2,18 +2,12 @@
   name = Dru Jensen
   email = drujensen@gmail.com
 
-[includeIf "gitdir:~/workspace/happymoney/**"]
-  path = ~/workspace/happymoney/.gitconfig
-
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
-  hooksPath = .githooks
 [init]
-  templatedir = ~/.git_template
   defaultBranch = main
 [alias]
-  ctags = !.git/hooks/ctags
   ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lg = log --oneline --graph --decorate --all
