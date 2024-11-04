@@ -90,8 +90,5 @@ alias dl="aws ecr get-login-password --region us-west-2 | docker login --usernam
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 alias xcode='xed'
 
-# copilot alias ghce (explain) and ghcs (suggest)
-eval "$(gh copilot alias -- bash)"
-
 # prompt
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"
