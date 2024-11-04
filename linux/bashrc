@@ -40,12 +40,28 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+  # We have color support; assume it's compliant with Ecma-48
+  # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+  # a case would tend to support setf rather than setaf.)
+  color_prompt=yes
+    else
+  color_prompt=
+    fi
 fi
-unset color_prompt
+
+if [ "$color_prompt" = yes ]; then
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[0;32m\]$(__git_ps1 " (%s)")\n\[\033[0m\]\$ '
+else
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\n\$ '
+fi
+unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -68,38 +84,30 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# local binaries
-export PATH=/home/orangepi/.local/bin:$PATH
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# set editor
-export EDITOR='nvim'
-set -o vi
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-# Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
-# Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-. "$HOME/.cargo/env"
-
-# Go
-export GOPATH=$HOME/.go
-export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
-
-# Swift
-export PATH=/usr/local/swift/usr/bin:$PATH
-
-# Zig
-export PATH=/usr/local/zig:$PATH
+alias gbr='git checkout master; git fetch --all --prune ; git pull origin master; git branch | grep -v "master" | xargs git branch -D'
+alias gbm='git checkout main; git fetch --all --prune; git pull origin main; git branch | grep -v "main" | xargs git branch -D'
+alias gbt='git checkout trunk; git fetch --all --prune; git pull origin trunk; git branch | grep -v "trunk" | xargs git branch -D'
+alias d="docker"
+alias dc="docker compose"
+alias dp="docker system prune -f --volumes"
+alias tf="terraform"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -112,29 +120,51 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Git Prompt
-source /etc/bash_completion.d/git-prompt
+# Git prompt
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(%s)")\$ '
+export GIT_PS1_SHOWSTASHSTATE=1
+source ~/.bash/linux/git-prompt.sh
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# SQL prompt
+source ~/.bash/linux/sql-prompt.sh
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Neovim
+export PATH="$PATH:/opt/nvim/bin"
 
-# some more aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias gbr='git checkout master; git fetch --all --prune ; git pull origin master; git branch | grep -v "master" | xargs git branch -D'
-alias gbm='git checkout main; git fetch --all --prune; git pull origin main; git branch | grep -v "main" | xargs git branch -D'
-alias gbt='git checkout trunk; git fetch --all --prune; git pull origin trunk; git branch | grep -v "trunk" | xargs git branch -D'
-alias be='bundle exec'
-alias d="docker"
-alias dc="docker compose"
-alias dp="docker system prune -f --volumes"
+# Node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Ruby
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$PATH:$RBENV_ROOT/bin"
+eval "$(rbenv init -)"
+
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$PYENV_ROOT/bin"
+eval "$(pyenv init -)"
+
+# Go
+export PATH="$PATH:/usr/local/go/bin"
+
+# Rust
+. "$HOME/.cargo/env"
+
+# Dotnet
+export DOTNET_ROOT="/usr/share/dotnet"
+export DOTNET_INSTALL_DIR="$DOTNET_ROOT"
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+# Swift
+export PATH=/usr/local/swift/usr/bin:$PATH
+
+# Zig
+export PATH=/usr/local/zig:$PATH
+
+# Angular 
+source <(ng completion script)
+
+# Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
