@@ -164,7 +164,11 @@ export PATH=/usr/local/swift/usr/bin:$PATH
 export PATH=/usr/local/zig:$PATH
 
 # Angular 
-source <(ng completion script)
+if [ -x "$(command -v ng)" ]; then
+    source <(ng completion script)
+fi
 
 # Brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ -x "$(command -v brew)" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
