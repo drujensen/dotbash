@@ -15,9 +15,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$(brew --prefix llvm)/bin:${PATH}"
 
 # node
-export NVM_DIR="$HOME/.nvm"
-  [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export PATH="$HOME/.nodenv/shims:$PATH"
+eval "$(nodenv init - bash)"
 
 # ruby
 export PATH="$HOME/.rbenv/shims:$PATH"
@@ -29,13 +28,14 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# go
+export GOPATH="/Users/drujensen/.go"
+export PATH="$HOME/.goenv/shims:$GOPATH/bin:$PATH"
+eval "$(goenv init -)"
+
 #mojo
 export MODULAR_HOME="/Users/drujensen/.modular"
 export PATH="/Users/drujensen/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
-
-# go
-export GOPATH="/Users/drujensen/.go"
-export PATH="$(brew --prefix)/opt/go/libexec/bin:$GOPATH/bin:$PATH"
 
 # crystal
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/opt/openssl/lib"
