@@ -147,7 +147,9 @@ export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 
 # Go
-export PATH="$PATH:/usr/local/go/bin"
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
 
 # Rust
 . "$HOME/.cargo/env"
