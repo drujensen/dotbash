@@ -132,9 +132,9 @@ source ~/.bash/linux/sql-prompt.sh
 export PATH="$PATH:/opt/nvim/bin"
 
 # Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NODENV_ROOT="$HOME/.nodenv"
+export PATH="$NODENV_ROOT/bin:$PATH"
+eval "$(nodenv init -)"
 
 # Ruby
 export RBENV_ROOT="$HOME/.rbenv"
