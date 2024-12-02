@@ -17,7 +17,7 @@ ln -sf .bash/mac/bashrc .bashrc
 ln -sf .bash/linux/bashrc .bashrc
 ```
 
-### nodenv, rbenv, pyenv, goenv
+### nodenv, rbenv, pyenv, goenv, swiftenv
 ```
 curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash
 
@@ -26,3 +26,5 @@ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 curl https://pyenv.run | bash
 
 git clone https://github.com/go-nv/goenv.git ~/.goenv
+
+git clone https://github.com/kylef/swiftenv.git ~/.swiftenv

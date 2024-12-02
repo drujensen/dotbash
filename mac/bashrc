@@ -33,6 +33,11 @@ export GOPATH="/Users/drujensen/.go"
 export PATH="$HOME/.goenv/shims:$GOPATH/bin:$PATH"
 eval "$(goenv init -)"
 
+# swift
+export SWIFTENV_ROOT="/Users/drujensen/.swiftenv"
+export PATH="$SWIFTENV_ROOT/bin:$PATH"
+eval "$(swiftenv init -)"
+
 #mojo
 export MODULAR_HOME="/Users/drujensen/.modular"
 export PATH="/Users/drujensen/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
@@ -42,9 +47,6 @@ export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/opt/openssl/lib"
 
 # rust environment
 . "$HOME/.cargo/env"
-
-# swift environment
-export PATH="$HOME/.mint/bin:$PATH"
 
 # java
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/opt/libsodium/lib"

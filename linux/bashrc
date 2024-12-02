@@ -151,6 +151,11 @@ export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 
+# Swift
+export SWIFTENV_ROOT="$HOME/.swiftenv"
+export PATH="$SWIFTENV_ROOT/bin:$PATH"
+eval "$(swiftenv init -)"
+
 # Rust
 . "$HOME/.cargo/env"
 
@@ -158,9 +163,6 @@ eval "$(goenv init -)"
 export DOTNET_ROOT="/usr/share/dotnet"
 export DOTNET_INSTALL_DIR="$DOTNET_ROOT"
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
-
-# Swift
-export PATH=/usr/local/swift/usr/bin:$PATH
 
 # Zig
 export PATH=/usr/local/zig:$PATH
