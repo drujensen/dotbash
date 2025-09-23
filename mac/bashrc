@@ -61,6 +61,8 @@ export PATH="$DOTNET_ROOT:$DOTNET_TOOLS:$PATH"
 # pipx
 export PATH="$PATH:/Users/drujensen/.local/bin"
 
+# opencode
+export PATH=/Users/drujensen/.opencode/bin:$PATH
 
 # bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -87,10 +89,11 @@ alias vi='$(brew --prefix)/bin/vim'
 alias be='bundle exec'
 alias d="docker"
 alias dc="docker compose"
-alias dp="docker system prune -f --volumes"
+alias dp="docker system prune -a --volumes"
 alias dl="aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 630519457484.dkr.ecr.us-west-2.amazonaws.com"
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 alias xcode='xed'
 
 # prompt
 PS1="\[\033[1;36m\]\u\[\033[32m\]\[\\033[0m\]:\[\033[32m\]\w\[\033[0m\]\n$"
+

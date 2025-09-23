@@ -106,7 +106,7 @@ alias gbm='git checkout main; git fetch --all --prune; git pull origin main; git
 alias gbt='git checkout trunk; git fetch --all --prune; git pull origin trunk; git branch | grep -v "trunk" | xargs git branch -D'
 alias d="docker"
 alias dc="docker compose"
-alias dp="docker system prune -f --volumes"
+alias dp="docker system prune -a --volumes"
 alias tf="terraform"
 
 # enable programmable completion features (you don't need to enable
