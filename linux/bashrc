@@ -125,9 +125,6 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 source ~/.bash/linux/git-prompt.sh
 
-# SQL prompt
-source ~/.bash/linux/sql-prompt.sh
-
 # Neovim
 export PATH="$PATH:/opt/nvim/bin"
 

@@ -4,7 +4,6 @@
 
 [core]
   editor = nvim
-  excludesfile = ~/.gitignore_global
 [init]
   defaultBranch = main
 [alias]
@@ -18,7 +17,7 @@
 [diftool]
   prompt = 0
 [difftool "vimdiff"]
-  cmd = vim -f -d \"$LOCAL\" \"$REMOTE\"
+  cmd = nvim -f -d \"$LOCAL\" \"$REMOTE\"
   prompt = 0
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
