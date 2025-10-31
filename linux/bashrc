@@ -153,9 +153,6 @@ export SWIFTENV_ROOT="$HOME/.swiftenv"
 export PATH="$SWIFTENV_ROOT/bin:$PATH"
 eval "$(swiftenv init -)"
 
-# Rust
-. "$HOME/.cargo/env"
-
 # Dotnet
 export DOTNET_ROOT="/usr/share/dotnet"
 export DOTNET_INSTALL_DIR="$DOTNET_ROOT"
