@@ -92,6 +92,7 @@ sudo apt-get install -y \
 curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash
 
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 curl https://pyenv.run | bash
 
